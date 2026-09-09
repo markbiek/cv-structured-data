@@ -26,7 +26,7 @@ WordPress.com.
   suspension and reminder jobs, nameserver restore, and the suspended-domain
   page customers see. Shipped it inert, every method stubbed and no callers, so
   it landed with no production impact. Built the unsuspend path first.
-- Took domain bundling from prototype to launch in 2026: catalogue schema and
+- Took domain bundling from prototype to launch in 2026: catalog schema and
   data on the backend, grouped line items and discount pricing through cart and
   checkout in Calypso, per-currency pricing, funnel analytics, and an on/off
   experiment behind a server-side feature flag.
