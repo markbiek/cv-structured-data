@@ -33,7 +33,7 @@ WordPress.com.
   server-side feature flag.
 - Member of Automattic's AI Guides group. Helped develop AI-enablement
   curriculum for all roles across the company. Provided AI tooling support and
-  lead learning sessions.
+  led learning sessions.
 - Closed an authorization hole that let any logged-in user disconnect any domain
   from any site. The REST route had no permission callback, which WordPress
   treats as public.
