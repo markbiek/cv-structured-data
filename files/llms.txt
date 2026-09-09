@@ -1,8 +1,8 @@
 # Mark Biek
 
 > Senior Software Engineer at Automattic. Domains, checkout and commerce
-> infrastructure for WordPress.com. Twenty-five years building web software,
-> mostly PHP backends. Based in Louisville, Kentucky.
+> infrastructure for WordPress.com. Nearly 30 years building software.
+> Based in Louisville, Kentucky.
 
 ## CV
 
