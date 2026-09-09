@@ -3,11 +3,12 @@
 A small WordPress plugin that makes [mark.biek.org/cv](https://mark.biek.org/cv)
 readable by machines as well as people.
 
-It does three things:
+It does four things:
 
 1. Prints a schema.org `Person` JSON-LD block in the `<head>` of the CV page.
 2. Serves `/cv.md` and `/llms.txt` from the site root with correct media types.
 3. Points `robots.txt` at `/llms.txt`.
+4. Adds print styles so the page saves cleanly as a PDF.
 
 Built for a WordPress.com Atomic site (Business plan or higher). Nothing in it is
 WordPress.com specific, so it works on any WordPress install.
@@ -26,6 +27,21 @@ keeps the files in version control with the code, on one deploy path.
 The hook only fires when nginx finds no real file at the path and falls through to
 `index.php`, which is the case for both paths here.
 
+## Print styles
+
+`assets/print.css` loads with `media="print"` and only on the CV page, so it
+cannot affect the screen render. It hides the site header, footer, navigation
+and the Jetpack subscription block, drops the block theme's screen width
+constraint so the content fills the page, sets `@page` margins, and keeps
+headings from stranding at the foot of a page.
+
+Link destinations are deliberately not appended with `a:after`. Most of the link
+text in this CV is already a URL, so expanding would print every address twice.
+
+The page header and footer on the printout, the URL, date and page numbers, come
+from the browser's print dialog and not from CSS. Turn them off there before
+saving the PDF.
+
 ## Install
 
 Copy the directory into `wp-content/plugins/` and activate it, or point
@@ -38,6 +54,8 @@ Everything lives in `cv-structured-data.php`:
 - `PAGE_SLUG` — the page that gets the JSON-LD. Currently `cv`.
 - `SERVED_FILES` — root paths mapped to media type and backing file.
 - `person_schema()` — the schema.org record.
+- `assets/print.css` — the print stylesheet. Versioned by `filemtime()`, so an
+  edit busts the cache without a plugin version bump.
 
 The CV content itself is in `files/cv.md` and `files/llms.txt`.
 

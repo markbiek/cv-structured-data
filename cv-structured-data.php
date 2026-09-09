@@ -2,7 +2,7 @@
 /**
  * Plugin Name:  CV Structured Data
  * Plugin URI:   https://github.com/markbiek/cv-structured-data
- * Description:  Emits schema.org JSON-LD on the CV page and serves /cv.md and /llms.txt from the site root.
+ * Description:  Emits schema.org JSON-LD on the CV page, serves /cv.md and /llms.txt from the site root, and adds print styles so the page saves cleanly as a PDF.
  * Version:      1.0.0
  * Author:       Mark Biek
  * Author URI:   https://mark.biek.org
@@ -39,6 +39,7 @@ const SERVED_FILES = array(
 add_action( 'wp_head', __NAMESPACE__ . '\render_head' );
 add_action( 'parse_request', __NAMESPACE__ . '\serve_root_files' );
 add_filter( 'robots_txt', __NAMESPACE__ . '\add_llms_reference' );
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_print_styles' );
 
 /**
  * Print the alternate link and the JSON-LD block, on the CV page only.
@@ -62,6 +63,34 @@ function render_head(): void {
 			person_schema(),
 			JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_PRETTY_PRINT
 		)
+	);
+}
+
+/**
+ * Load the print stylesheet on the CV page.
+ *
+ * media="print" means the browser only applies it when printing or saving to
+ * PDF, so this cannot affect the screen render. Versioned by filemtime so a
+ * change busts the cache without touching the plugin version.
+ */
+function enqueue_print_styles(): void {
+	if ( ! is_page( PAGE_SLUG ) ) {
+		return;
+	}
+
+	$relative = 'assets/print.css';
+	$file     = __DIR__ . '/' . $relative;
+
+	if ( ! is_readable( $file ) ) {
+		return;
+	}
+
+	wp_enqueue_style(
+		'cv-print',
+		plugins_url( $relative, __FILE__ ),
+		array(),
+		(string) filemtime( $file ),
+		'print'
 	);
 }
 

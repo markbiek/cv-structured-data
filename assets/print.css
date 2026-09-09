@@ -1,0 +1,117 @@
+/*
+ * Print styles for the CV page.
+ *
+ * Loaded with media="print" and only on that page, so it never affects the
+ * screen render. Selectors target the block theme's markup: template parts for
+ * the site header and footer, and the Jetpack subscription block.
+ */
+
+@page {
+	margin: 15mm 14mm;
+}
+
+/* Chrome that should not reach paper. */
+.wp-block-template-part,
+.wp-block-navigation,
+.subscription-block,
+.wp-block-jetpack-subscriptions,
+.sharedaddy,
+.comments-area,
+.post-navigation,
+.skip-link,
+#wpadminbar {
+	display: none !important;
+}
+
+/* Ink on paper, not a screen. */
+html,
+body {
+	background: #fff !important;
+	color: #000 !important;
+	font-size: 10.5pt;
+	line-height: 1.4;
+}
+
+body * {
+	background: transparent !important;
+	box-shadow: none !important;
+	text-shadow: none !important;
+}
+
+/* Block themes constrain content width for reading on screen. On paper that
+   wastes most of the page, so let the content run to the @page margins. */
+.entry-content,
+.entry-content > * {
+	max-width: none !important;
+	width: auto !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
+.wp-block-post-title {
+	font-size: 16pt;
+	margin: 0 0 8pt;
+}
+
+/* Section headings: "Places I've Worked", "Technologies". */
+.entry-content h2 {
+	font-size: 13pt;
+	margin: 14pt 0 4pt;
+}
+
+/* Job headings. */
+.entry-content h3 {
+	font-size: 11.5pt;
+	margin: 10pt 0 3pt;
+}
+
+.entry-content h4,
+.entry-content h5 {
+	font-size: 10.5pt;
+	margin: 8pt 0 3pt;
+}
+
+/* Never strand a heading at the foot of a page, separated from its job. */
+.wp-block-post-title,
+.entry-content h2,
+.entry-content h3,
+.entry-content h4,
+.entry-content h5 {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/* Keep a bullet whole rather than splitting it across two pages. */
+.entry-content li {
+	page-break-inside: avoid;
+	break-inside: avoid;
+	margin-bottom: 3pt;
+}
+
+.entry-content ul,
+.entry-content ol {
+	margin: 4pt 0;
+	padding-left: 16pt;
+}
+
+.entry-content p {
+	margin: 0 0 6pt;
+	orphans: 3;
+	widows: 3;
+}
+
+/* Links stay underlined but print in black. The destination is deliberately
+   NOT appended with a:after — most link text in this CV is already the URL,
+   so expanding it would print every address twice. */
+.entry-content a {
+	color: #000 !important;
+	text-decoration: underline;
+}
+
+.entry-content img {
+	max-width: 100% !important;
+	page-break-inside: avoid;
+	break-inside: avoid;
+}
