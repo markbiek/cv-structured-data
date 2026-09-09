@@ -169,7 +169,7 @@ function person_schema(): array {
 					'name'  => 'Automattic',
 					'url'   => 'https://automattic.com',
 				),
-				'description'          => 'Domains, checkout and commerce infrastructure for WordPress.com. Built the registrar-agnostic domain contact verification service that keeps every WordPress.com domain ICANN-compliant. Took domain bundling and upsell from prototype to production launch. Member of Automattic\'s AI Guides group. Built and hardened the domain capabilities behind WordPress.com\'s AI support agent. Led the white-labelled site migration plugin project.',
+				'description'          => 'Domains, checkout and commerce infrastructure for WordPress.com. Built the contact verification service that keeps every WordPress.com domain ICANN-compliant across all registrars. Took domain bundling from prototype to launch. Member of Automattic\'s AI Guides group. Built the domain capabilities behind WordPress.com\'s AI support agent. Led the white-labeled site migration plugin.',
 			),
 			array(
 				'@type'       => 'OccupationalExperience',

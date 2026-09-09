@@ -22,42 +22,42 @@ WordPress.com.
 
 **Selected work**
 
-- Built the registrar-agnostic domain contact verification service that keeps
-  every WordPress.com domain ICANN-compliant (verification endpoint, event
-  handlers, suspension and reminder async jobs, nameserver restore, and the
-  customer-facing suspended-domain page). Phased rollout for a zero-impact
-  deploy; built the unsuspend path before the suspension path for added safety.
-- Took domain bundling and upsell from prototype to production launch (2026):
-  catalog schema and data on the backend, grouped line items and discount
-  pricing through cart and checkout in Calypso, funnel analytics, and an ExPlat
-  experiment behind a server-side feature flag. Also built a complete dashboard
-  for quickly viewing domain bundling sales metrics. Handled architecture and
-  backend and frontend development.
-- Member of Automattic's AI Guides group. Helped design AI learning curriculum
-  for all roles, lead training and work sessions, and shared personal AI
-  workflows.
-- Built and hardened the domain capabilities behind WordPress.com's AI support
-  agent: shared error-handling trait, shared authorization gate, and read
-  abilities for DNS, WHOIS and mail-service records.
-- Led the white-labelled site migration plugin project (2024), coordinating an
-  external development partner, design, and a cross-team engineering group.
-  Replaced the previous "Move to WordPress.com" tool.
-- Found and closed an authorization hole that let any authenticated user
-  disconnect any domain from any site (a REST route registered with no
-  permission callback).
-- Diagnosed and fixed duplicate signup-funnel events inflating top-of-funnel
-  counts by 8–61% by flow, distorting onboarding measurement and marketing
-  attribution organization-wide.
-- Traced silent Google Workspace provisioning failures to a replica-lag read,
-  then built CLI remediation tooling and shipped it into the support UI for
-  self-service.
-- Ran Gutenberg release rotations: caught and reverted a bad release, then built
-  the version-visibility tooling and per-chunk deploy change that lowered the
-  risk of every release after it.
-- Wrote and published simplenote-mcp, an MCP server for Simplenote, to npm and
-  the MCP Registry. Shared publicly by Automattic's CEO, Matt Mullenweg.
-- Established the team's shared Claude Code plugin marketplace and ran a team
-  session on agent-assisted development workflow.
+- Built the contact verification service that keeps every WordPress.com domain
+  ICANN-compliant, across all registrars: verification endpoint, event handlers,
+  suspension and reminder jobs, nameserver restore, and the suspended-domain
+  page customers see. Shipped it inert, every method stubbed and no callers, so
+  it landed with no production impact. Built the unsuspend path first.
+- Took domain bundling from prototype to launch in 2026: catalog schema and data
+  on the backend, grouped line items and discount pricing through cart and
+  checkout in Calypso, funnel analytics, and an on/off experiment behind a
+  server-side feature flag.
+- Member of Automattic's AI Guides group. Helped develop AI-enablement
+  curriculum for all roles across the company. Provided AI tooling support and
+  lead learning sessions.
+- Closed an authorization hole that let any logged-in user disconnect any domain
+  from any site. The REST route had no permission callback, which WordPress
+  treats as public.
+- Built the domain capabilities behind WordPress.com's AI support agent: a
+  shared trait for turning registrar failures into usable responses, an
+  authorization gate across every ability, and read abilities for DNS, WHOIS and
+  mail service records.
+- Led the white-labeled site migration plugin in 2024, working with an outside
+  development partner, design, and engineers from three teams. It replaced the
+  old Move to WordPress.com plugin.
+- Fixed duplicate signup events in the Calypso stepper that had inflated
+  top-of-funnel counts by 8 to 61% depending on the flow, distorting onboarding
+  metrics and marketing attribution across the company.
+- Traced silent Google Workspace provisioning failures, where customers paid for
+  mailboxes that were never created, to a replica lag read in the retry path.
+  Fixed it, wrote CLI tooling to remediate the affected accounts, then put that
+  in the support UI so support could resolve it without an engineer.
+- Wrote simplenote-mcp, an MCP server for Simplenote, published to npm and the
+  MCP Registry and picked up by Matt Mullenweg, Automattic's CEO.
+- Ran Gutenberg release rotations. Caught and reverted a bad release, then built
+  a tool to report Gutenberg versions across Simple and Atomic and changed the
+  release bot to deploy each chunk at a time.
+- Set up the team's shared Claude Code plugin repository and ran a team session
+  on working with coding agents.
 
 **Also**
 
@@ -72,8 +72,8 @@ hiring and code-test review · Calypso development · Jetpack development.
 
 - Build custom websites using Laravel, WordPress, ReactJS and NextJS. Some
   examples:
-  - Product subscription service for WARE's boilerwarehouse.com.
-  - Parts wishlist functionality for WARE's boilerwarehouse.com.
+  - Product subscription service and parts wishlist for WARE's
+    boilerwarehouse.com.
   - Integration from WordPress to Salesforce for the Stave & Thief Society.
   - Backend development and Sanity CMS integration for the redesigned
     via.studio.
@@ -81,19 +81,15 @@ hiring and code-test review · Calypso development · Jetpack development.
   - Developed the redesigned air quality website for Louisville Air Watch
     (https://airqualitymap.louisvilleky.gov/), including a more efficient API
     layer.
-- Design large-scale ecommerce systems for clients. Recent examples:
-  - ScholarRx — simplified their ecommerce flow by moving to a headless
-    ecommerce platform combined with a React SPA for cart and checkout.
-  - Ridge Runner — designed a vendor-focused store platform with an eye toward
-    rapid vendor store setup.
+- Design large-scale ecommerce systems for clients.
 - Spearheaded the project to sell custom WordPress plugins on
-  plugins.viastudio.com (now defunct). Lead developer on the plugins themselves
-  as well as the corresponding sales website.
-- Development team manager and member of the company leadership team. Assisted
-  with client prospecting, generated new business leads, lead developer on large
-  projects, assisted project managers with scheduling and sprint planning, and
-  mentored junior developers.
-- Managed internal and cloud servers. Managed Vagrant, Docker and Jenkins CI
+  plugins.viastudio.com (now defunct). This included lead developer on the
+  plugins themselves as well as the corresponding sales website.
+- Development team manager and member of the company leadership team.
+  - Assist with client prospecting; generate new business leads; lead developer
+    on large projects; assist project managers with scheduling and sprint
+    planning; mentor junior developers.
+- Manage internal and cloud servers; manage Vagrant, Docker and Jenkins CI
   projects for internal development.
 
 ### Senior Development Consultant — Studymaker, LLC
@@ -105,17 +101,15 @@ hiring and code-test review · Calypso development · Jetpack development.
   - Developed the process to pull data from the CDC's Google Cloud instance to
     import into the website.
   - Developed the process to export processed data as Parquet files for CDC
-    reporting. This was later replaced by a database instance the CDC connects
-    to directly.
+    reporting. This was later replaced by a special database instance which CDC
+    connects to directly.
   - Set up and managed the AWS resources for hosting.
 - Development on Studymaker's EDC platform for tracking medical research study
-  data, including:
+  data.
   - Spearheaded the initiative to migrate from PHP 5.6 to PHP 7.x to PHP 8.x.
-  - Added a build process for modern JS and CSS.
-  - AWS S3 integration for large file storage.
-  - Mailgun integration for email sending.
-  - Overall refactoring and code cleanup.
-- Designed and maintained AWS architecture for HIPAA-compliant PHP application
+  - Build tooling improvements, AWS S3 integration for large file storage, email
+    sending with Mailgun, SMS sending with Twilio.
+- Design and maintain AWS architecture for HIPAA-compliant PHP application
   hosting, including monitoring and deployment scripts.
 - Wrote an AngularJS application for calculating Procalcitonin changes
   (https://www.brahms-pct-calculator.com/). Involved close work with the FDA and
@@ -124,11 +118,8 @@ hiring and code-test review · Calypso development · Jetpack development.
   Israel Deaconess Medical Center, Harvard University. Wrote a mobile-friendly
   website for collecting patient medical information, used by BIDMC doctors at
   the 2012 Democratic Convention at their mobile treatment stations.
-- Wrote a PHP/Laravel/MySQL website for displaying data dashboards, including a
-  custom REST API for pulling data together from multiple sources.
-- Wrote a variety of PHP/MySQL websites for data collection. The data collected
-  was used for studies to improve patient care through more efficient and
-  accurate record keeping, and to measure the effectiveness of new drugs.
+- Custom Laravel site for displaying data dashboards. Included a custom REST API
+  so dashboard data could be pulled into other sources.
 - Server management, including migration from Rackspace to AWS.
 
 ### Earlier roles
