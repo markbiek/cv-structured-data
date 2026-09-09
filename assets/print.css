@@ -10,10 +10,16 @@
 	margin: 15mm 14mm;
 }
 
-/* Chrome that should not reach paper. */
+/* Chrome that should not reach paper.
+ *
+ * Do NOT hide .subscription-block on its own. The theme puts that class on two
+ * nested groups: the outer one wraps the whole content region including
+ * .entry-content, and only the inner one is the subscribe section. Hiding the
+ * bare class blanks the entire CV. The nested selector targets the inner group
+ * structurally, so it does not depend on the theme's layout classes. */
 .wp-block-template-part,
 .wp-block-navigation,
-.subscription-block,
+.subscription-block .subscription-block,
 .wp-block-jetpack-subscriptions,
 .sharedaddy,
 .comments-area,

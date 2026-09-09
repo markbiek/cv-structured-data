@@ -42,6 +42,23 @@ The page header and footer on the printout, the URL, date and page numbers, come
 from the browser's print dialog and not from CSS. Turn them off there before
 saving the PDF.
 
+### Checking the hide list
+
+The hide selectors are written against the live theme's markup, and a class that
+looks like chrome can turn out to wrap the content. `.subscription-block` did:
+the theme puts it on two nested groups and the outer one contains
+`.entry-content`, so hiding the bare class printed a blank page.
+
+Run this after any theme update, or after editing the hide list:
+
+```sh
+python3 tools/check-print-css.py
+```
+
+It fetches the CV page, works out which elements each hide selector matches, and
+fails if any of them match `.entry-content` or one of its ancestors. Pass a local
+HTML file instead of the URL to check a saved copy.
+
 ## Install
 
 Copy the directory into `wp-content/plugins/` and activate it, or point
