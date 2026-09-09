@@ -21,50 +21,46 @@ WordPress.com.
 
 **Selected work**
 
-- Built the registrar-agnostic domain contact verification service that keeps
-  every WordPress.com domain compliant with ICANN registrant-verification rules:
-  verification endpoint, contact-update / transfer-in / domain-deletion event
-  handlers, suspension and reminder async jobs, nameserver swap and restore, and
-  the customer-facing suspended-domain page. Landed the subsystem inert — every
-  method stubbed, no callers — for a zero-impact deploy, and built the unsuspend
-  path before the suspension path.
-- Took domain bundling and upsell from prototype to production launch (2026):
-  bundle catalogue schema and production data on the backend, grouped line items
-  and discount pricing through cart and checkout in Calypso, per-currency
-  pricing, funnel analytics, and an on/off experiment behind a server-side
-  feature flag. Owned end to end, from database schema to checkout UI to
-  measurement.
-- Built and hardened the domain capabilities behind WordPress.com's AI support
-  agent: a shared error-handling trait that converts raw registrar failures into
-  responses the agent can act on, a shared authorization gate across every domain
-  ability, and read abilities for DNS, WHOIS and mail-service records.
-- Led the white-labelled site migration plugin project (2024), coordinating an
-  external development partner, design, and a cross-team group of engineers. The
-  plugin replaced the previous "Move to WordPress.com" tool.
-- Found and closed an authorization hole that let any authenticated user
-  disconnect any domain from any site — a REST route registered with no
-  permission callback, which the WordPress REST server treats as public.
-- Diagnosed and fixed duplicate signup-funnel events in the Calypso stepper
-  framework that inflated top-of-funnel counts by 8–61% depending on flow,
-  distorting onboarding measurement and marketing attribution organisation-wide.
-- Traced a class of silent Google Workspace provisioning failures — customers
-  paid for mailboxes that were never created, with no alert — to a replica-lag
-  read in the retry path. Fixed it, built CLI tooling to remediate affected
-  customers, then shipped that into the support UI for self-service.
-- Ran Gutenberg release rotations for WordPress.com. Caught and reverted a bad
-  release, then built the version-visibility tooling and the per-chunk deploy
-  change that lowered the risk profile of every release after it.
-- Wrote and published simplenote-mcp, an MCP server for Simplenote, to npm and
-  the MCP Registry.
-- Established the team's shared Claude Code plugin marketplace and ran a team
-  session on agent-assisted development workflow.
+- Built the contact verification service that keeps every WordPress.com domain
+  ICANN-compliant, across all registrars: verification endpoint, event handlers,
+  suspension and reminder jobs, nameserver restore, and the suspended-domain
+  page customers see. Shipped it inert, every method stubbed and no callers, so
+  it landed with no production impact. Built the unsuspend path first.
+- Took domain bundling from prototype to launch in 2026: catalogue schema and
+  data on the backend, grouped line items and discount pricing through cart and
+  checkout in Calypso, per-currency pricing, funnel analytics, and an on/off
+  experiment behind a server-side feature flag.
+- Closed an authorization hole that let any logged-in user disconnect any domain
+  from any site. The REST route had no permission callback, which WordPress
+  treats as public.
+- Built the domain capabilities behind WordPress.com's AI support agent: a
+  shared trait for turning registrar failures into usable responses, an
+  authorization gate across every ability, and read abilities for DNS, WHOIS and
+  mail service records.
+- Led the white-labeled site migration plugin in 2024, working with an outside
+  development partner, design, and engineers from three teams. It replaced the
+  old Move to WordPress.com plugin.
+- Fixed duplicate signup events in the Calypso stepper that had inflated
+  top-of-funnel counts by 8 to 61% depending on the flow, distorting onboarding
+  metrics and marketing attribution across the company.
+- Traced silent Google Workspace provisioning failures, where customers paid for
+  mailboxes that were never created, to a replica lag read in the retry path.
+  Fixed it, wrote CLI tooling to remediate the affected accounts, then put that
+  in the support UI so support could resolve it without an engineer.
+- Wrote simplenote-mcp, an MCP server for Simplenote, published to npm and the
+  MCP Registry and picked up by Matt Mullenweg.
+- Ran Gutenberg release rotations. Caught and reverted a bad release, then built
+  a tool to report Gutenberg versions across Simple and Atomic and changed the
+  release bot to deploy each chunk at a time.
+- Set up the team's shared Claude Code plugin repository and ran a team session
+  on working with coding agents.
 
 **Also**
 
-Reader and Tumblr StreamBuilder implementation on WordPress.com · site migration
-and import flows · Commerce in a Box domain infrastructure · WordPress.com theme
-and plugin marketplace · Professional Email and Google Workspace · engineering
-hiring and code-test review.
+Reader and Tumblr StreamBuilder on WordPress.com · site migration and import
+flows · Commerce in a Box domain infrastructure · theme and plugin marketplace ·
+Professional Email and Google Workspace · engineering hiring and code-test
+review.
 
 ### Development Team Lead — VIA Studio
 
